@@ -85,7 +85,7 @@ class CalendarCarousel<T extends EventInterface> extends StatefulWidget {
   final Widget? markedDateWidget;
 
   /// Change `ShapeBorder` when `markedDateShowIcon` is set to false.
-  final ShapeBorder? markedDateCustomShapeBorder;
+  final OutlinedBorder? markedDateCustomShapeBorder;
 
   /// Change `TextStyle` when `markedDateShowIcon` is set to false.
   final TextStyle? markedDateCustomTextStyle;
