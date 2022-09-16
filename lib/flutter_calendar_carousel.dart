@@ -527,39 +527,6 @@ class _CalendarState<T extends EventInterface>
               padding: EdgeInsets.all(widget.dayPadding),
             ),
           onPressed: widget.disableDayPressed ? null : () => _onDayPressed(now),
-          shape: widget.markedDateCustomShapeBorder != null &&
-                  markedDatesMap != null &&
-                  markedDatesMap.getEvents(now).length > 0
-              ? widget.markedDateCustomShapeBorder
-              : widget.daysHaveCircularBorder == null
-                  ? CircleBorder()
-                  : widget.daysHaveCircularBorder ?? false
-                      ? CircleBorder(
-                          side: BorderSide(
-                            color: isSelectedDay
-                                ? widget.selectedDayBorderColor
-                                : isToday
-                                    ? widget.todayBorderColor
-                                    : isPrevMonthDay
-                                        ? widget.prevMonthDayBorderColor
-                                        : isNextMonthDay
-                                            ? widget.nextMonthDayBorderColor
-                                            : widget.thisMonthDayBorderColor,
-                          ),
-                        )
-                      : RoundedRectangleBorder(
-                          side: BorderSide(
-                            color: isSelectedDay
-                                ? widget.selectedDayBorderColor
-                                : isToday
-                                    ? widget.todayBorderColor
-                                    : isPrevMonthDay
-                                        ? widget.prevMonthDayBorderColor
-                                        : isNextMonthDay
-                                            ? widget.nextMonthDayBorderColor
-                                            : widget.thisMonthDayBorderColor,
-                          ),
-                        ),
           child: Stack(
             children: widget.showIconBehindDayText
                 ? <Widget>[
