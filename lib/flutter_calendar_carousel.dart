@@ -481,17 +481,51 @@ class _CalendarState<T extends EventInterface>
       child: GestureDetector(
         onLongPress: () => _onDayLongPressed(now),
         child: TextButton(
-          style: TextButton.styleFrom(
-            primary: isSelectedDay && widget.selectedDayButtonColor != null
-                ? widget.selectedDayButtonColor
-                : isToday && widget.todayButtonColor != null
-                ? widget.todayButtonColor
+            style: TextButton.styleFrom(
+              shape: widget.markedDateCustomShapeBorder != null &&
+                  markedDatesMap != null &&
+                  markedDatesMap.getEvents(now).length > 0
+                  ? widget.markedDateCustomShapeBorder
+                  : widget.daysHaveCircularBorder == null
+                  ? CircleBorder()
+                  : widget.daysHaveCircularBorder ?? false
+                  ? CircleBorder(
+                side: BorderSide(
+                  color: isSelectedDay
+                      ? widget.selectedDayBorderColor
+                      : isToday
+                      ? widget.todayBorderColor
+                      : isPrevMonthDay
+                      ? widget.prevMonthDayBorderColor
+                      : isNextMonthDay
+                      ? widget.nextMonthDayBorderColor
+                      : widget.thisMonthDayBorderColor,
+                ),
+              )
+                  : RoundedRectangleBorder(
+                side: BorderSide(
+                  color: isSelectedDay
+                      ? widget.selectedDayBorderColor
+                      : isToday
+                      ? widget.todayBorderColor
+                      : isPrevMonthDay
+                      ? widget.prevMonthDayBorderColor
+                      : isNextMonthDay
+                      ? widget.nextMonthDayBorderColor
+                      : widget.thisMonthDayBorderColor,
+                ),
+              ),
+              backgroundColor: isSelectedDay
+                  ? widget.selectedDayButtonColor
+                  : isToday
+                  ? widget.todayButtonColor
 
-            // If day is in Multiple selection mode, apply a different color
-                : isMultipleMarked
-                ? multipleMarkedColor
-                : widget.dayButtonColor
-          ),
+              // If day is in Multiple selection mode, apply a different color
+                  : isMultipleMarked
+                  ? multipleMarkedColor
+                  : widget.dayButtonColor,
+              padding: EdgeInsets.all(widget.dayPadding),
+            ),
           onPressed: widget.disableDayPressed ? null : () => _onDayPressed(now),
           padding: EdgeInsets.all(widget.dayPadding),
           shape: widget.markedDateCustomShapeBorder != null &&
