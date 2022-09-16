@@ -527,7 +527,6 @@ class _CalendarState<T extends EventInterface>
               padding: EdgeInsets.all(widget.dayPadding),
             ),
           onPressed: widget.disableDayPressed ? null : () => _onDayPressed(now),
-          padding: EdgeInsets.all(widget.dayPadding),
           shape: widget.markedDateCustomShapeBorder != null &&
                   markedDatesMap != null &&
                   markedDatesMap.getEvents(now).length > 0
