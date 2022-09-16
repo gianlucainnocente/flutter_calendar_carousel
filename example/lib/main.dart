@@ -268,7 +268,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         fontSize: 24.0,
                       ),
                     )),
-                    TextButton(
+                    FlatButton(
                       child: Text('PREV'),
                       onPressed: () {
                         setState(() {
@@ -279,7 +279,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         });
                       },
                     ),
-                    TextButton(
+                    FlatButton(
                       child: Text('NEXT'),
                       onPressed: () {
                         setState(() {
