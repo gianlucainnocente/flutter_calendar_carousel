@@ -481,15 +481,17 @@ class _CalendarState<T extends EventInterface>
       child: GestureDetector(
         onLongPress: () => _onDayLongPressed(now),
         child: TextButton(
-          color: isSelectedDay && widget.selectedDayButtonColor != null
-              ? widget.selectedDayButtonColor
-              : isToday && widget.todayButtonColor != null
-                  ? widget.todayButtonColor
+          style: TextButton.styleFrom(
+            primary: isSelectedDay && widget.selectedDayButtonColor != null
+                ? widget.selectedDayButtonColor
+                : isToday && widget.todayButtonColor != null
+                ? widget.todayButtonColor
 
-                  // If day is in Multiple selection mode, apply a different color
-                  : isMultipleMarked
-                      ? multipleMarkedColor
-                      : widget.dayButtonColor,
+            // If day is in Multiple selection mode, apply a different color
+                : isMultipleMarked
+                ? multipleMarkedColor
+                : widget.dayButtonColor
+          ),
           onPressed: widget.disableDayPressed ? null : () => _onDayPressed(now),
           padding: EdgeInsets.all(widget.dayPadding),
           shape: widget.markedDateCustomShapeBorder != null &&
